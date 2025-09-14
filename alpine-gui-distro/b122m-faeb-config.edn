@@ -1,0 +1,89 @@
+;; ============================================================================
+;; 💚🖤💛 B122M FAEB CONFIGURATION 💚🖤💛
+;; ============================================================================
+;; Alpine GUI GR2PH178 - Framework 16 Distribution
+;; Timestamp: 12025-09-14--0400--pacific-daylight-time
+
+{:system
+ {:name "gr2ph178"
+  :version "1.0.0"
+  :target "framework-16"
+  :architecture "x86_64"
+  :cpu "amd-ryzen-7840hs"
+  :gpu "amd-radeon-780m"
+  :ram "32gb-ddr5"
+  :storage "usb-c-microdrive"}
+
+ :alpine-base
+ {:version "3.19"
+  :desktop "xfce4"
+  :wayland true
+  :kernel "linux-firmware-amd"
+  :bootloader "coreboot"}
+
+ :user
+ {:name "tes7e"
+  :email "xykj51@gmail.com"
+  :gpg-key "B122M-FAEB-FRAMEWORK-16"
+  :uid 1000
+  :shell "bash"
+  :groups ["wheel" "audio" "video" "networkmanager"]}
+
+ :packages
+ {:core ["alpine-base" "linux-firmware-amd"]
+  :desktop ["xfce4" "xfce4-terminal" "wayland"]
+  :b122m-stack ["nix" "babashka" "clojure" "urbit"]
+  :security ["gnupg" "git" "openssh"]
+  :tools ["nano" "vim" "curl" "wget"]
+  :framework16 ["mesa" "vulkan-loader" "libva" "libvdpau"]}
+
+ :network
+ {:hostname "gr2ph178-framework16"
+  :nostr-relay "wss://relay.nostr.com"
+  :urbit-comet "~zod"
+  :udp-ports [80 443 8080 8443]
+  :firewall true
+  :networkmanager true}
+
+ :security
+ {:gpg-agent true
+  :ssh-support true
+  :apparmor true
+  :global-git-signing true
+  :verified-commits true}
+
+ :services
+ {:xserver true
+  :display-manager "xfce"
+  :pcscd true
+  :networkmanager true
+  :wifi-backend "iwd"}
+
+ :hardware
+ {:opengl {:enable true
+           :dri-support true
+           :dri-support32bit true}
+  :cpu {:amd-update-microcode true}
+  :usb {:modeswitch true}
+  :kernel-params ["quiet" "splash" "amd_iommu=on" "iommu=pt"]}
+
+ :philosophy
+ {:name "Timid Revolution"
+  :principles ["privacy" "decentralization" "sovereignty" "gentle-progress"]
+  :values ["cautious-innovation" "user-empowerment" "open-source"]
+  :manifesto "Building sovereign systems with gentle, cautious progress"}
+
+ :build
+ {:iso-target "alpine-gr2ph178-framework16.iso"
+  :usb-installer true
+  :coreboot-integration true
+  :automated-setup true
+  :edn-configuration true}
+
+ :deployment
+ {:github-user "tes7e"
+  :gpg-signing true
+  :nostr-announcements true
+  :urbit-sync true
+  :udp-communication true}
+}
